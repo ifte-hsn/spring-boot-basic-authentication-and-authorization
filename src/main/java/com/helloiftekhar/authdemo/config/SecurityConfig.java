@@ -34,7 +34,10 @@ public class SecurityConfig {
                         auth  -> auth.requestMatchers("/login","/register", "/images/*","/css/*", "/js/*").permitAll()
                                 .anyRequest().authenticated()
                 ).userDetailsService(userService)
-                .logout(logout->logout.logoutSuccessUrl("/login?logout=true"));
+                .logout(logout->logout.logoutSuccessUrl("/login?logout=true")
+                        .deleteCookies("JSESSIONID"))
+                .rememberMe(rem->rem.key("uniqueAndSecret")
+                        .tokenValiditySeconds(86400));
 
         return http.build();
     }
