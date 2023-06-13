@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<nav th:fragment="navbar" class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-bottom-dark fixed-top" data-bs-theme="dark">
+    <div class="container-fluid">
+
+        <!-- offcanvas button -->
+        <button class="navbar-toggler me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+            <span class="navbar-toggler-icon" data-bs-target="#offcanvasExample"></span>
+        </button>
+
+        <!-- offcanvas button -->
+
+        <a class="navbar-brand fw-bold me-auto" th:href="@{/}">Hello; Iftekhar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form class="d-flex ms-auto" role="search">
+                <div class="input-group flex-nowrap my-3 my-lg-0">
+                    <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="addon-wrapping">
+                    <button class="input-group-text btn btn-primary" id="addon-wrapping"><ion-icon name="search-outline"></ion-icon></button>
+                </div>
+            </form>
+            <ul class="navbar-nav mb-2 mb-lg-0">
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <ion-icon name="person-outline"></ion-icon>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li>
+                            <form th:action="@{/logout}" method="post">
+                                <button class="dropdown-item" type="submit">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+</body>
+</html>

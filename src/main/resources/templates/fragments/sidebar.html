@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+<div th:fragment="sidebar" class="offcanvas offcanvas-start bg-dark text-white sidebar-nav" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+
+  <div class="offcanvas-body p-0">
+    <nav class="navbar-dark">
+      <ul class="navbar-nav">
+        <li>
+          <a class="nav-link disabled text-uppercase small fw-bold px-3">CORE</a>
+        </li>
+        <li>
+          <a th:href="@{/}" class="nav-link px-3 active">
+                  <span class="me-2">
+                    <ion-icon name="speedometer-outline"></ion-icon>
+                  </span>
+            <span>Dashboard</span>
+          </a>
+        </li>
+
+        <li>
+          <a th:href="@{/admin}" class="nav-link px-3 active">
+                  <span class="me-2">
+                    <ion-icon name="speedometer-outline"></ion-icon>
+                  </span>
+            <span>Admin Page</span>
+          </a>
+        </li>
+
+        <li class="my-4">
+          <hr class="dropdown-divider">
+        </li>
+
+        <li>
+          <a class="nav-link disabled text-uppercase small fw-bold px-3">INTERFACE</a>
+        </li>
+
+        <li>
+          <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  <span class="me-2">
+                    <ion-icon name="grid-outline"></ion-icon>
+                  </span>
+            <span>Dashboard</span>
+            <span class="right-icon ms-auto">
+                    <ion-icon name="chevron-down-outline"></ion-icon>
+                  </span>
+          </a>
+
+          <div class="collapse" id="collapseExample">
+            <div>
+              <ul class="navbar-nav ps-3">
+                <li>
+                  <a href="#" class="nav-link px-3">
+                          <span class="me-2">
+                            <ion-icon name="speedometer-outline"></ion-icon>
+                          </span>
+                    <span>
+                            Dashboard
+                          </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+</body>
+</html>

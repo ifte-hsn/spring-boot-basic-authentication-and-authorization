@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head::head}"></head>
+<body>
+
+<nav th:replace="~{fragments/navbar::navbar}"></nav>
+
+<!-- Navbar -->
+
+<!-- offcanvus -->
+<div th:replace="~{fragments/sidebar::sidebar}"></div>
+<!-- offcanvus -->
+
+
+<main class="mt-5 pt-3">
+  <div class="container">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 fw-bold fs-3">
+          Access Denied
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-md-12">
+          <div class="alert alert-danger fw-bold fs-5">
+
+            <p>
+              <span>
+                <ion-icon name="close-circle-outline"></ion-icon>
+              </span>
+              You do not have permission to access this page. Please
+              <a th:href="@{/}">Click here</a> to return to dashboard;</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+<div th:replace="~{fragments/footer::footer}"></div>
+
+
+</body>
+</html>

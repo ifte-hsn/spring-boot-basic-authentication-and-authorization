@@ -31,9 +31,15 @@ public class SecurityConfig {
                 .logout(logout -> logout.logoutUrl("/logout")
                         .logoutSuccessUrl("/login"))
                 .authorizeHttpRequests(
-                        auth  -> auth.requestMatchers("/login","/register", "/images/*","/css/*", "/js/*").permitAll()
+                        auth  -> auth.requestMatchers("/login",
+                                        "/register",
+                                        "/images/*",
+                                        "/css/*",
+                                        "/js/*").permitAll()
+                                .requestMatchers("admin").hasAuthority("admin")
                                 .anyRequest().authenticated()
-                ).userDetailsService(userService)
+                ).exceptionHandling(exp -> exp.accessDeniedPage("/accessDenied"))
+                .userDetailsService(userService)
                 .logout(logout->logout.logoutSuccessUrl("/login?logout=true")
                         .deleteCookies("JSESSIONID"))
                 .rememberMe(rem->rem.key("uniqueAndSecret")
