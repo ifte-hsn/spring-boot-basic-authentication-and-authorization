@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class DashboardController {
     @GetMapping("/")
     public String index() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return "index";
     }
 
