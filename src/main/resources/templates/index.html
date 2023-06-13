@@ -1,217 +1,186 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap admin template</title>
+
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-    <link href="/css/style.css" rel="stylesheet">
-
+    <link th:href="@{/css/style.css}" rel="stylesheet">
 </head>
 <body>
 
-<header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">
-        <img src="/images/logo-white.png" width="200px">
-    </a>
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-bottom-dark fixed-top" data-bs-theme="dark">
+    <div class="container-fluid">
 
-</header>
+        <!-- offcanvas button -->
+        <button class="navbar-toggler me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+            <span class="navbar-toggler-icon" data-bs-target="#offcanvasExample"></span>
+        </button>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary min-vh-100">
-            <div class="offcanvas-lg offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+        <!-- offcanvas button -->
 
-                <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="#">
-                                <ion-icon name="home-outline"></ion-icon>
-                                Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                <ion-icon name="document-outline"></ion-icon>
-                                Orders
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                <ion-icon name="cart-outline"></ion-icon>
-                                Products
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                <ion-icon name="people-outline"></ion-icon>
-                                Customers
-                            </a>
-                        </li>
+        <a class="navbar-brand fw-bold me-auto" href="#">Hello; Iftekhar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form class="d-flex ms-auto" role="search">
+                <div class="input-group flex-nowrap my-3 my-lg-0">
+                    <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="addon-wrapping">
+                    <button class="input-group-text btn btn-primary" id="addon-wrapping"><ion-icon name="search-outline"></ion-icon></button>
+                </div>
+            </form>
+            <ul class="navbar-nav mb-2 mb-lg-0">
 
-                    </ul>
-
-
-
-                    <hr class="my-3">
-
-                    <ul class="nav flex-column mb-auto">
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                <ion-icon name="cog-outline"></ion-icon>
-                                Settings
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                <ion-icon name="log-out-outline"></ion-icon>
-                                Sign out
-                            </a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <ion-icon name="person-outline"></ion-icon>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li>
+                            <form th:action="@{/logout}" method="post">
+                                <button class="dropdown-item" type="submit">Logout</button>
+                            </form>
                         </li>
                     </ul>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<!-- Navbar -->
+
+<!-- offcanvus -->
+
+<div class="offcanvas offcanvas-start bg-dark text-white sidebar-nav" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+
+    <div class="offcanvas-body p-0">
+        <nav class="navbar-dark">
+            <ul class="navbar-nav">
+                <li>
+                    <a class="nav-link disabled text-uppercase small fw-bold px-3">CORE</a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link px-3 active">
+                  <span class="me-2">
+                    <ion-icon name="speedometer-outline"></ion-icon>
+                  </span>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="my-4">
+                    <hr class="dropdown-divider">
+                </li>
+
+                <li>
+                    <a class="nav-link disabled text-uppercase small fw-bold px-3">INTERFACE</a>
+                </li>
+
+                <li>
+                    <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  <span class="me-2">
+                    <ion-icon name="grid-outline"></ion-icon>
+                  </span>
+                        <span>Dashboard</span>
+                        <span class="right-icon ms-auto">
+                    <ion-icon name="chevron-down-outline"></ion-icon>
+                  </span>
+                    </a>
+
+                    <div class="collapse" id="collapseExample">
+                        <div>
+                            <ul class="navbar-nav ps-3">
+                                <li>
+                                    <a href="#" class="nav-link px-3">
+                          <span class="me-2">
+                            <ion-icon name="speedometer-outline"></ion-icon>
+                          </span>
+                                        <span>
+                            Dashboard
+                          </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<!-- offcanvus -->
+
+
+<main class="mt-5 pt-3">
+    <div class="container">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 fw-bold fs-3">
+                    Dashboard
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <div class="card text-bg-primary h-100">
+                        <div class="card-header">Header</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Primary card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <div class="card text-bg-info h-100">
+                        <div class="card-header">Header</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Info card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <div class="card text-bg-danger h-100">
+                        <div class="card-header">Header</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Info card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-3 mb-3">
+                    <div class="card text-bg-warning h-100">
+                        <div class="card-header">Header</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Info card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Dashboard</h1>
-            </div>
-
-            <div class="table-responsive small">
-                <table class="table table-striped table-sm">
-                    <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Header</th>
-                        <th scope="col">Header</th>
-                        <th scope="col">Header</th>
-                        <th scope="col">Header</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>1,001</td>
-                        <td>random</td>
-                        <td>data</td>
-                        <td>placeholder</td>
-                        <td>text</td>
-                    </tr>
-                    <tr>
-                        <td>1,002</td>
-                        <td>placeholder</td>
-                        <td>irrelevant</td>
-                        <td>visual</td>
-                        <td>layout</td>
-                    </tr>
-                    <tr>
-                        <td>1,003</td>
-                        <td>data</td>
-                        <td>rich</td>
-                        <td>dashboard</td>
-                        <td>tabular</td>
-                    </tr>
-                    <tr>
-                        <td>1,003</td>
-                        <td>information</td>
-                        <td>placeholder</td>
-                        <td>illustrative</td>
-                        <td>data</td>
-                    </tr>
-                    <tr>
-                        <td>1,004</td>
-                        <td>text</td>
-                        <td>random</td>
-                        <td>layout</td>
-                        <td>dashboard</td>
-                    </tr>
-                    <tr>
-                        <td>1,005</td>
-                        <td>dashboard</td>
-                        <td>irrelevant</td>
-                        <td>text</td>
-                        <td>placeholder</td>
-                    </tr>
-                    <tr>
-                        <td>1,006</td>
-                        <td>dashboard</td>
-                        <td>illustrative</td>
-                        <td>rich</td>
-                        <td>data</td>
-                    </tr>
-                    <tr>
-                        <td>1,007</td>
-                        <td>placeholder</td>
-                        <td>tabular</td>
-                        <td>information</td>
-                        <td>irrelevant</td>
-                    </tr>
-                    <tr>
-                        <td>1,008</td>
-                        <td>random</td>
-                        <td>data</td>
-                        <td>placeholder</td>
-                        <td>text</td>
-                    </tr>
-                    <tr>
-                        <td>1,009</td>
-                        <td>placeholder</td>
-                        <td>irrelevant</td>
-                        <td>visual</td>
-                        <td>layout</td>
-                    </tr>
-                    <tr>
-                        <td>1,010</td>
-                        <td>data</td>
-                        <td>rich</td>
-                        <td>dashboard</td>
-                        <td>tabular</td>
-                    </tr>
-                    <tr>
-                        <td>1,011</td>
-                        <td>information</td>
-                        <td>placeholder</td>
-                        <td>illustrative</td>
-                        <td>data</td>
-                    </tr>
-                    <tr>
-                        <td>1,012</td>
-                        <td>text</td>
-                        <td>placeholder</td>
-                        <td>layout</td>
-                        <td>dashboard</td>
-                    </tr>
-                    <tr>
-                        <td>1,013</td>
-                        <td>dashboard</td>
-                        <td>irrelevant</td>
-                        <td>text</td>
-                        <td>visual</td>
-                    </tr>
-                    <tr>
-                        <td>1,014</td>
-                        <td>dashboard</td>
-                        <td>illustrative</td>
-                        <td>rich</td>
-                        <td>data</td>
-                    </tr>
-                    <tr>
-                        <td>1,015</td>
-                        <td>random</td>
-                        <td>tabular</td>
-                        <td>information</td>
-                        <td>text</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </main>
     </div>
-</div>
+</main>
+
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
 
 </body>
 </html>
