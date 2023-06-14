@@ -12,30 +12,21 @@
                     <img th:src="@{/images/logo.png}" class="w-75 mb-3" alt="">
                     <p class="fw-medium">Sign in to start your session</p>
 
-                    <div class="alert alert-danger" role="alert" th:if="${param.error != null}">
-                        Failed Login.
-                        <div th:if="${SPRING_SECURITY_LAST_EXCEPTION !=null}">
-                            Reason: <span th:text="${SPRING_SECURITY_LAST_EXCEPTION.message}"></span>
-                        </div>
-                    </div>
-
-
-                    <div class="alert alert-success" role="alert" th:if="${param.logout != null}">
-                        You have been logged out.
-                    </div>
+                    <div th:replace="~{fragments/alert::alert}"></div>
                 </div>
-
 
 
                 <form class="m-5" th:action="@{/login}" method="post">
                     <div class="mb-3">
                         <label class="form-label" for="username">Email Address</label>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Email Address">
+                        <input type="text" class="form-control" id="username" name="username"
+                               placeholder="Email Address">
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label" for="password">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                        <input type="password" class="form-control" id="password" name="password"
+                               placeholder="Password">
                     </div>
 
                     <div class="row mb-3">
@@ -59,14 +50,21 @@
                         <hr class="my-3">
 
                         <div class="col-6">
-                            <button class="form-control btn btn-google" type="submit"><ion-icon name="logo-google"></ion-icon> Google</button>
+                            <button class="form-control btn btn-google" type="submit">
+                                <ion-icon name="logo-google"></ion-icon>
+                                Google
+                            </button>
                         </div>
 
                         <div class="col-6">
-                            <button class="form-control btn btn-facebook" type="submit"><ion-icon name="logo-facebook"></ion-icon> Facebook</button>
+                            <button class="form-control btn btn-facebook" type="submit">
+                                <ion-icon name="logo-facebook"></ion-icon>
+                                Facebook
+                            </button>
                         </div>
 
-                        <p class="text-center mt-3">Not a member? <a th:href="@{/register}">Signup for new account</a></p>
+                        <p class="text-center mt-3">Not a member? <a th:href="@{/register}">Signup for new account</a>
+                        </p>
 
                     </div>
                 </form>

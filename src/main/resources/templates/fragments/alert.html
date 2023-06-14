@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<div th:fragment="alert">
+    <div class="alert alert-danger" role="alert" th:if="${param.error != null}">
+        Failed Login.
+        <div th:if="${SPRING_SECURITY_LAST_EXCEPTION !=null}">
+            Reason: <span th:text="${SPRING_SECURITY_LAST_EXCEPTION.message}"></span>
+        </div>
+    </div>
+
+    <div class="alert alert-danger" th:if="${ERROR_MESSAGE}">
+        <h4>
+            <ion-icon name="close-circle-outline"></ion-icon>
+            Error!
+        </h4>
+        <span th:text="${ERROR_MESSAGE}"></span>
+    </div>
+
+    <div class="alert alert-success" th:if="${SUCCESS_MESSAGE}">
+        <h4>
+            <ion-icon name="checkmark-circle-outline"></ion-icon>
+            Success!
+        </h4>
+        <span th:text="${SUCCESS_MESSAGE}"></span>
+    </div>
+
+
+    <div class="alert alert-success" role="alert" th:if="${param.logout != null}">
+        You have been logged out.
+    </div>
+</div>
+</body>
+</html>

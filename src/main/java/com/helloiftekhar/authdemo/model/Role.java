@@ -3,9 +3,6 @@ package com.helloiftekhar.authdemo.model;
 
 import jakarta.persistence.*;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
-
 @Entity
 @Table(name = "ROLE")
 public class Role {
@@ -16,18 +13,7 @@ public class Role {
 
     @Column(name = "name")
     String name;
-
-    @OneToMany
-    private Set<User> users = new LinkedHashSet<>();
-
-    public Set<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
-    }
-
+    
 
     public Integer getId() {
         return id;
