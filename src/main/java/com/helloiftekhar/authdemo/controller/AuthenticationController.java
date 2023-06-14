@@ -3,9 +3,11 @@ package com.helloiftekhar.authdemo.controller;
 import com.helloiftekhar.authdemo.model.Role;
 import com.helloiftekhar.authdemo.model.User;
 import com.helloiftekhar.authdemo.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,7 +38,11 @@ public class AuthenticationController {
     }
 
     @PostMapping("/register")
-    public String saveUser(@ModelAttribute("user") User user, RedirectAttributes redirectAttributes) {
+    public String saveUser(@Valid @ModelAttribute("user") User user, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            return "register";
+        }
+
         if (userService.save(user)) {
             redirectAttributes.addFlashAttribute("SUCCESS_MESSAGE", "User successfully registered");
             return "redirect:/login";

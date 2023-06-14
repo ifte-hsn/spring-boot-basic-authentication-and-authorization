@@ -32,14 +32,24 @@
 
                     <div class="mb-3">
                         <label class="form-label" for="email">Email</label>
-                        <input type="text" class="form-control" th:field="*{email}" placeholder="Email">
-                        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name Error</p>
+                        <input type="text" class="form-control"
+                               th:classappend="${#fields.hasErrors('email')} ? 'is-invalid' : ''" th:field="*{email}"
+                               placeholder="Email">
+                        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="invalid-feedback">
+                            Invalid email
+                        </div>
+
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label" for="password">Password</label>
-                        <input type="password" class="form-control" th:field="*{password}"
+                        <input type="password" class="form-control"
+                               th:classappend="${#fields.hasErrors('password')} ? 'is-invalid' : ''"
+                               th:field="*{password}"
                                placeholder="Password">
+                        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="invalid-feedback">
+                            Invalid email
+                        </div>
                     </div>
 
                     <div class="mb-3">

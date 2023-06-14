@@ -1,6 +1,8 @@
 package com.helloiftekhar.authdemo.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,9 +26,12 @@ public class User implements UserDetails {
     @Column(name = "last_name")
     String lastName;
 
+    @NotBlank(message = "Email is required")
+    @Email(message = "Please enter a valid e-mail address")
     @Column(name = "email")
     String email;
 
+    @NotBlank(message = "Password is required")
     @Column(name = "password")
     String password;
 
