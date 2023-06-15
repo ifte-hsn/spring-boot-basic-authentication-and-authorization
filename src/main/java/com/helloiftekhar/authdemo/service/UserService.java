@@ -4,6 +4,7 @@ import com.helloiftekhar.authdemo.model.Role;
 import com.helloiftekhar.authdemo.model.User;
 import com.helloiftekhar.authdemo.repository.RoleRepository;
 import com.helloiftekhar.authdemo.repository.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -45,13 +46,13 @@ public class UserService implements UserDetailsService {
     }
 
 
-    public void updateResetPasswordToken(String token, String email) throws Exception {
+    public void updateResetPasswordToken(String token, String email) throws EntityNotFoundException {
         User user = userRepository.findByEmail(email);
         if (user != null) {
             user.setResetPasswordToken(token);
             userRepository.save(user);
         } else {
-            throw new Exception("Could not find any user with email " + email);
+            throw new EntityNotFoundException("Could not find any user with email " + email);
         }
     }
 
