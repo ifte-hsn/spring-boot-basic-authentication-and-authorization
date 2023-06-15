@@ -35,6 +35,9 @@ public class User implements UserDetails {
     @Column(name = "password")
     String password;
 
+    @Column(name = "reset_password_token")
+    private String resetPasswordToken;
+
     @ManyToOne(fetch = FetchType.EAGER)
     Role role;
 
@@ -119,6 +122,14 @@ public class User implements UserDetails {
         this.role = role;
     }
 
+    public String getResetPasswordToken() {
+        return resetPasswordToken;
+    }
+
+    public void setResetPasswordToken(String resetPasswordToken) {
+        this.resetPasswordToken = resetPasswordToken;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -127,6 +138,8 @@ public class User implements UserDetails {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", resetPasswordToken='" + resetPasswordToken + '\'' +
+                ", role=" + role +
                 '}';
     }
 }
