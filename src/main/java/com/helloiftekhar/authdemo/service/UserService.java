@@ -44,4 +44,27 @@ public class UserService implements UserDetailsService {
         return roleRepository.findAll();
     }
 
+
+    public void updateResetPasswordToken(String token, String email) throws Exception {
+        User user = userRepository.findByEmail(email);
+        if (user != null) {
+            user.setResetPasswordToken(token);
+            userRepository.save(user);
+        } else {
+            throw new Exception("Could not find any user with email " + email);
+        }
+    }
+
+    public User getResetPasswordToken(String token) {
+        return userRepository.findByResetPasswordToken(token);
+    }
+
+    public void updatePassword(User user, String password) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String encodedPassword = encoder.encode(password);
+        user.setPassword(encodedPassword);
+        user.setResetPasswordToken(null);
+        userRepository.save(user);
+    }
+
 }
